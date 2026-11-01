@@ -1,0 +1,126 @@
+{
+  "format": 1,
+  "sources": [
+    {
+      "repository": "mattpocock/skills",
+      "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+      "license": "MIT",
+      "files": {
+        "vendor/mattpocock-skills/LICENSE": {
+          "source_path": "LICENSE",
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "git_blob_sha": "f1dd2c09108dde1a5f56097cee8461b3ea834499"
+        },
+        "vendor/mattpocock-skills/skills/engineering/codebase-design/DEEPENING.md": {
+          "source_path": "skills/engineering/codebase-design/DEEPENING.md",
+          "sha256": "f3dd099ce99289bd213914d8ee3e2429b78309c3957ca4583f7659551b1d53c1",
+          "git_blob_sha": "cd94075cfd754d147555c5d747a16431ed4c7dd8"
+        },
+        "vendor/mattpocock-skills/skills/engineering/codebase-design/DESIGN-IT-TWICE.md": {
+          "source_path": "skills/engineering/codebase-design/DESIGN-IT-TWICE.md",
+          "sha256": "c222ab5a82e0405672eb9062d62496139a08828e45d07fc5f18e4952c10fac1a",
+          "git_blob_sha": "aebdc9f8c05b40d7832de38e2fd8380e1e5507ac"
+        },
+        "vendor/mattpocock-skills/skills/engineering/codebase-design/SKILL.md": {
+          "source_path": "skills/engineering/codebase-design/SKILL.md",
+          "sha256": "2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2",
+          "git_blob_sha": "3f63c8146dd2604b419c929e9876b90c30d410e9"
+        },
+        "vendor/mattpocock-skills/skills/engineering/codebase-design/agents/openai.yaml": {
+          "source_path": "skills/engineering/codebase-design/agents/openai.yaml",
+          "sha256": "edebc9e4fcfe102114012575eaa9600b9b5fd08c311664f389c36e7bc717740f",
+          "git_blob_sha": "3180715edb37f6e96bec42f92f00169faa8886ef"
+        },
+        "vendor/mattpocock-skills/skills/productivity/grill-me/SKILL.md": {
+          "source_path": "skills/productivity/grill-me/SKILL.md",
+          "sha256": "caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637",
+          "git_blob_sha": "3947ff9c4ad980d14fc07fccbf659d47c114e81d"
+        },
+        "vendor/mattpocock-skills/skills/productivity/grill-me/agents/openai.yaml": {
+          "source_path": "skills/productivity/grill-me/agents/openai.yaml",
+          "sha256": "c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b",
+          "git_blob_sha": "4d6fb0c746c5d21364dce5d0cf8c51eab9712e7b"
+        },
+        "vendor/mattpocock-skills/skills/productivity/grilling/SKILL.md": {
+          "source_path": "skills/productivity/grilling/SKILL.md",
+          "sha256": "a146842ed93ca43d833550fa9adf02e58cb63c83fea9d4b4522995b82242d4e2",
+          "git_blob_sha": "d2f09a18e6a6c65c55f1271ba08dfeaf06f0bed3"
+        },
+        "vendor/mattpocock-skills/skills/productivity/grilling/agents/openai.yaml": {
+          "source_path": "skills/productivity/grilling/agents/openai.yaml",
+          "sha256": "1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b",
+          "git_blob_sha": "ddbdb96139c0c1dfe6bca698f39d0465674b8a39"
+        }
+      }
+    },
+    {
+      "repository": "obra/superpowers",
+      "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "license": "MIT",
+      "files": {
+        "vendor/superpowers/LICENSE": {
+          "source_path": "LICENSE",
+          "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+          "git_blob_sha": "abf0390320aa14406af7a520b9b0739fdda9bf08"
+        },
+        "vendor/superpowers/skills/writing-plans/SKILL.md": {
+          "source_path": "skills/writing-plans/SKILL.md",
+          "sha256": "a6c67c1900064347c2a329990dd3c555657c51c3ec53b259a08aa01a2c26139a",
+          "git_blob_sha": "4cf0275d88d67aa4ef09f4bbca9970ed6ff74a00"
+        }
+      }
+    },
+    {
+      "repository": "testdouble/han",
+      "commit": "abba73a773528905a8f3d15956029394746e5c7f",
+      "license": "MIT",
+      "files": {
+        "vendor/testdouble-han/LICENSE": {
+          "source_path": "LICENSE",
+          "sha256": "9940ab927f654e997d00aedc6a8734be0600f9443377697419ee7ed4247f2d36",
+          "git_blob_sha": "4b27cfab9064dd03e97762c9896f7915ad50636d"
+        },
+        "vendor/testdouble-han/han-coding/references/config-rule.md": {
+          "source_path": "han-coding/references/config-rule.md",
+          "sha256": "f2fcb5b52168d2e6ec5ee795d636e89b89dc3fccf7771a63dff0d36dc845b754",
+          "git_blob_sha": "bcb53cb241879e6ff12e9ca13caa874ac2deb261"
+        },
+        "vendor/testdouble-han/han-coding/skills/code-walkthrough/SKILL.md": {
+          "source_path": "han-coding/skills/code-walkthrough/SKILL.md",
+          "sha256": "1cdf59dae9fea4aa452d448d6ca83dfc7cd1f26781c0c9239195c0d2b9a55247",
+          "git_blob_sha": "5bf2a3412d0e2b17965de59797b1044f28119daf"
+        },
+        "vendor/testdouble-han/han-coding/skills/code-walkthrough/references/walkthrough-step-format.md": {
+          "source_path": "han-coding/skills/code-walkthrough/references/walkthrough-step-format.md",
+          "sha256": "42cdee91f27f5028d991dd3d12768b724056530d4a079613a14fa7666b4a86ec",
+          "git_blob_sha": "32570a6c81e9bab85cccd4a0c0b146ce92b47557"
+        },
+        "vendor/testdouble-han/han-communication/references/config-rule.md": {
+          "source_path": "han-communication/references/config-rule.md",
+          "sha256": "f2fcb5b52168d2e6ec5ee795d636e89b89dc3fccf7771a63dff0d36dc845b754",
+          "git_blob_sha": "bcb53cb241879e6ff12e9ca13caa874ac2deb261"
+        },
+        "vendor/testdouble-han/han-communication/references/explanation-rule.md": {
+          "source_path": "han-communication/references/explanation-rule.md",
+          "sha256": "c2ca8ee0ef81db39ed12cc252deed3adeb695c356364045d848a28b0a8c3bdc6",
+          "git_blob_sha": "27d6e730a1c9cacf4ce95296354ef59e4e1ecb50"
+        },
+        "vendor/testdouble-han/han-communication/references/readability-rule.md": {
+          "source_path": "han-communication/references/readability-rule.md",
+          "sha256": "5282eb329e7c086bf2ffcbda894d81f604038064b8e68e31d39479093f4d5255",
+          "git_blob_sha": "0df11aaa41f3ea59cae021f7203d367c92cf7c99"
+        },
+        "vendor/testdouble-han/han-communication/references/writing-voice.md": {
+          "source_path": "han-communication/references/writing-voice.md",
+          "sha256": "0446f3d92edbeb87974a815319cb0d3e1f218bde3b62b9ea2717151e58e8ac7b",
+          "git_blob_sha": "2eb5b4275efbb879c2d8062a0cac4eecaa517d51"
+        },
+        "vendor/testdouble-han/han-communication/skills/explanation-guidance/SKILL.md": {
+          "source_path": "han-communication/skills/explanation-guidance/SKILL.md",
+          "sha256": "c097d73f02d0b58f06bda438e08fe20c6b8ec022b9509e0510593e5bdd489cc7",
+          "git_blob_sha": "cc55b31a70000a4d290fa2d3064ffc37ba01c665"
+        }
+      }
+    }
+  ]
+}
