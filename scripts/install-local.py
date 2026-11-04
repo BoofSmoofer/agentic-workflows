@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Copy the self-contained skill into one explicitly selected project checkout."""
+"""Copy a selected self-contained skill into one explicitly selected project checkout."""
 import argparse
 from pathlib import Path
 import shutil
 import subprocess
 import sys
+
+SKILLS = ('engineering-workflow', 'local-pr-workflow')
 
 
 def git(project, *args, check=True):
@@ -12,17 +14,19 @@ def git(project, *args, check=True):
                           stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
 
-def install(project, client, dry_run=False):
+def install(project, client, dry_run=False, skill='engineering-workflow'):
+    if skill not in SKILLS:
+        raise ValueError(f'Unknown skill: {skill}')
     project = Path(project).expanduser().resolve(strict=True)
     actual = Path(git(project, 'rev-parse', '--show-toplevel').stdout.strip()).resolve()
     if actual != project:
         raise ValueError('--project must be the Git checkout root')
-    source = Path(__file__).resolve().parents[1] / 'skills/engineering-workflow'
+    source = Path(__file__).resolve().parents[1] / 'skills' / skill
     if not (source / 'SKILL.md').is_file():
         raise ValueError('Source skill is missing; run from a complete library checkout')
     if project == Path(__file__).resolve().parents[1]:
         raise ValueError('Choose another project, not the workflow source library')
-    relative = Path('.agents' if client == 'codex' else '.claude') / 'skills/engineering-workflow'
+    relative = Path('.agents' if client == 'codex' else '.claude') / 'skills' / skill
     destination = project / relative
     for path in (relative, Path('.agent-work')):
         cursor = project
@@ -83,10 +87,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--project', required=True, help='Root of another Git checkout')
     parser.add_argument('--client', required=True, choices=('codex', 'claude'))
+    parser.add_argument('--skill', choices=SKILLS, default='engineering-workflow',
+                        help='Workflow to install (default: engineering-workflow)')
     parser.add_argument('--dry-run', action='store_true')
     args = parser.parse_args()
     try:
-        install(args.project, args.client, args.dry_run)
+        install(args.project, args.client, args.dry_run, args.skill)
     except (ValueError, OSError, subprocess.CalledProcessError) as exc:
         print(f'Install stopped: {exc}', file=sys.stderr)
         return 1

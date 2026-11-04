@@ -8,7 +8,7 @@ import sys
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / 'skills/engineering-workflow'
+SKILLS = ('engineering-workflow', 'local-pr-workflow')
 
 
 def anchors(text):
@@ -26,27 +26,32 @@ def anchors(text):
 
 def validate():
     errors = []
-    skill = (SKILL / 'SKILL.md').read_text()
-    if not skill.startswith('---\nname: engineering-workflow\ndescription: '):
-        errors.append('Missing/invalid coordinator frontmatter')
-    if '/Users/' in skill or '/Users/' in (SKILL / 'references/session-handoff.md').read_text():
-        errors.append('Machine-specific path leaked into portable workflow')
-    manifest = json.loads((SKILL / 'vendor/manifest.json').read_text())
-    recorded = set()
-    for source in manifest['sources']:
-        for name, record in source['files'].items():
-            path = SKILL / name
-            recorded.add(path)
-            if not path.is_file():
-                errors.append(f'Missing upstream file: {name}')
-                continue
-            data = path.read_bytes()
-            blob = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
-            if hashlib.sha256(data).hexdigest() != record['sha256'] or blob != record['git_blob_sha']:
-                errors.append(f'Upstream bytes changed: {name}')
-    vendor_files = set(p for p in (SKILL / 'vendor').rglob('*') if p.is_file()) - {SKILL / 'vendor/manifest.json'}
-    if vendor_files != recorded:
-        errors.append('Vendor file set differs from pinned manifest')
+    pinned_count = 0
+    for skill_name in SKILLS:
+        directory = ROOT / 'skills' / skill_name
+        skill = (directory / 'SKILL.md').read_text()
+        if not skill.startswith(f'---\nname: {skill_name}\ndescription: '):
+            errors.append(f'{skill_name}: missing/invalid coordinator frontmatter')
+        for path in directory.rglob('*.md'):
+            if '/Users/' in path.read_text():
+                errors.append(f'{path.relative_to(ROOT)}: machine-specific path in portable workflow')
+        manifest = json.loads((directory / 'vendor/manifest.json').read_text())
+        recorded = set()
+        for source in manifest['sources']:
+            for name, record in source['files'].items():
+                path = directory / name
+                recorded.add(path)
+                if not path.is_file():
+                    errors.append(f'{skill_name}: missing upstream file: {name}')
+                    continue
+                data = path.read_bytes()
+                blob = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+                if hashlib.sha256(data).hexdigest() != record['sha256'] or blob != record['git_blob_sha']:
+                    errors.append(f'{skill_name}: upstream bytes changed: {name}')
+        vendor_files = set(p for p in (directory / 'vendor').rglob('*') if p.is_file()) - {directory / 'vendor/manifest.json'}
+        if vendor_files != recorded:
+            errors.append(f'{skill_name}: vendor file set differs from pinned manifest')
+        pinned_count += len(recorded)
     for path in ROOT.rglob('*.md'):
         content = path.read_text()
         # Markdown links only, including pinned upstream references; skip illustrative fenced code.
@@ -64,7 +69,7 @@ def validate():
     for error in errors:
         print(error, file=sys.stderr)
     if not errors:
-        print(f'PASS: coordinator, local links/anchors, portable paths and {len(recorded)} pinned upstream files')
+        print(f'PASS: {len(SKILLS)} coordinators, local links/anchors, portable paths and {pinned_count} pinned upstream files')
     return bool(errors)
 
 
